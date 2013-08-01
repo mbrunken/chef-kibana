@@ -1,0 +1,30 @@
+#! /bin/sh
+# /etc/init.d/kibana
+#
+# created by chef
+#
+
+case "$1" in
+start)
+<%= @cmd %> -C<%= @path %> kibana-service.rb start
+exit $?
+;;
+stop)
+<%= @cmd %> -C<%= @path %> kibana-service.rb stop
+exit $?
+;;
+restart)
+<%= @cmd %> -C<%= @path %> kibana-service.rb restart
+exit $?
+;;
+status)
+<%= @cmd %> -C<%= @path %> kibana-service.rb status
+exit $?
+;;
+*)
+echo "Usage: /etc/init.d/kibana {start|stop|restart|status}"
+exit 1
+;;
+esac
+
+exit 0

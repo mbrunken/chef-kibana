@@ -56,13 +56,13 @@ bash 'kibana bundle install' do
 end
 
 service 'kibana' do
-  provider Chef::Provider::Service::Upstart
+  provider Chef::Provider::Service::Init
   supports :start => true, :restart => true, :stop => true, :status => true
   action :nothing
 end
 
 template '/etc/init/kibana.conf' do
-  source 'upstart.conf.erb'
+  source 'kibana.init.erb'
   mode '0600'
   notifies :restart, 'service[kibana]', :delayed
 end
